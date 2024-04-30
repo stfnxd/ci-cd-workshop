@@ -9,6 +9,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const port = process.env.PORT || 3000;
 
+// TODO: You must change the connectionstring to the API when deploying in docker compose
 app.get('/', (req, res) => {
 fetch('http://localhost:3001/api/names')
     .then(response => response.json())
@@ -16,6 +17,7 @@ fetch('http://localhost:3001/api/names')
     .catch(err => res.status(500).json(err));
 });
 
+// TODO: You must change the connectionstring to the API when deploying in docker compose
 app.post('/add-name', (req, res) => {
 fetch('http://localhost:3001/api/names', {
     method: 'POST',
