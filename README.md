@@ -46,16 +46,15 @@ Before setting up the project, ensure you have the following installed on your s
    npm install
    ```
 
-3. **Create the Docker Compose File**
-   As part of the exercise, you are to create a `docker-compose.yml` file that orchestrates the front-end, API, and MongoDB database containers. This file should define the necessary services, networks, and volumes.
-
-4. **Build and Run the Application**
-   Once your Docker Compose file is ready, build and run the containers:
-   ```bash
-   docker-compose up --build
-   ```
-
-5. **Access the Application**
+3. **Database Setup**
+   - Ensure MongoDB is running on your local machine.
+   - Alternatively, you can pull a docker image with MongoDB and start it locally with the following command:
+     ```bash
+     docker run -d -p 27017:27017 --name ci-cd-database mongo:4.4
+     ```
+     
+4. **Access the Application**
+   - Start the frontend application and the api from the terminal.
    - The web interface can be accessed at `http://localhost:3000`.
    - The API will be available at `http://localhost:3001/api/names`.
 
