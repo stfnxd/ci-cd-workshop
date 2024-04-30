@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Greeting App</title>
+</head>
+<body>
+  <h1>Greeting App</h1>
+  <form action="/add-name" method="post">
+    <input type="text" name="name" required>
+    <button type="submit">Add Name</button>
+  </form>
+  <h2>Greetings</h2>
+  <ul>
+    <% names.forEach(function(name) { %>
+      <li>Hello, <%= name.name %>!</li>
+    <% }); %>
+  </ul>
+</body>
+</html>
