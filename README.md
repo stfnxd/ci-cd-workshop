@@ -1,42 +1,75 @@
-This scaffold will consist of three main components:
+# Greeting Application
 
-1. **Front-end Application:** A Node.js application using Express and EJS as the view engine.
-2. **REST API:** Another Node.js application with Express that serves as the backend API.
-3. **MongoDB Database:** A MongoDB instance running in a Docker container.
+## Introduction
 
-### Directory Structure
+The Greeting Application is a functional demonstration of a web application built using a microservices architecture. This educational tool is designed to enhance understanding of web development workflows and technologies, specifically focusing on Node.js, Express, EJS, and MongoDB. Students will gain hands-on experience by constructing the CI/CD pipeline and Docker configurations as part of their learning process.
 
-Here’s how the project directory might look:
+## Architecture
 
-```
-/my-web-app
-|-- /api                   # API source files
-|   |-- server.js          # Entry point for the API server
-|   |-- /routes            # API routes (empty)
-|   `-- /controllers       # API logic (empty)
-|-- /web                   # Web application source files
-|   |-- app.js             # Entry point for the web server
-|   |-- /views             # EJS templates
-|   |-- /public            # Static files like CSS, JavaScript, images (empty)
-|   `-- /routes            # Web app routes (empty)
-|-- /docker-compose.yml    # Docker compose file to orchestrate containers
-`-- /README.md             # Project documentation
-```
-### Starting a Docker Container Locally with MongoDB
+The application is divided into three main components:
 
-1. Run the following command to download the MongoDB docker container: 
-   ```bash 
-   docker pull mongo:4.4
+1. **Front-end Application:** Built with Node.js, utilizing Express as the server framework and EJS for templating. It serves as the user interface where users can submit names and see greetings for each stored name.
+
+2. **REST API:** This Node.js application uses Express to handle HTTP requests. It manages interactions with the MongoDB database by providing endpoints to add new names and retrieve all existing names.
+
+3. **MongoDB Database:** Used for storing names submitted through the API. Students are expected to deploy MongoDB as an independent Docker container, configuring it to integrate seamlessly with the rest of the application.
+
+## Features
+
+- **Submit Names:** Users can input names through a web form.
+- **View Greetings:** Displays greetings for each name retrieved from the database.
+- **Build and Deploy:** Students are tasked with setting up Docker containers and configuring Docker Compose to manage the application's services.
+
+## Setup Instructions
+
+### Prerequisites
+
+Before setting up the project, ensure you have the following installed on your system:
+- Node.js
+- npm (Node Package Manager)
+- Docker
+
+### Application Setup
+
+1. **Clone the Repository**
+   ```bash
+   git clone [repository-url]
+   cd my-web-app
    ```
 
-2. Run the container 
+2. **Install Dependencies**
+   Navigate to each project component directory (`api` and `web`) and install the required Node.js packages:
    ```bash
-   docker run -d -p 27017:27017 --name=mongo-example mongo:4.4
+   cd api
+   npm install
+   cd ../web
+   npm install
    ```
 
-3. Verify the container is running
+3. **Create the Docker Compose File**
+   As part of the exercise, you are to create a `docker-compose.yml` file that orchestrates the front-end, API, and MongoDB database containers. This file should define the necessary services, networks, and volumes.
+
+4. **Build and Run the Application**
+   Once your Docker Compose file is ready, build and run the containers:
    ```bash
-   docker ps
-   ```   
+   docker-compose up --build
+   ```
 
+5. **Access the Application**
+   - The web interface can be accessed at `http://localhost:3000`.
+   - The API will be available at `http://localhost:3001/api/names`.
 
+## Contributing
+
+We encourage you to contribute to this project as part of your learning. Suggestions for new features, improvements in the documentation, or fixes are welcome.
+
+Please adhere to the following steps for contributing:
+1. Fork the repository.
+2. Create a feature branch (`git checkout -b feature/YourFeature`).
+3. Commit your changes (`git commit -am 'Add some YourFeature'`).
+4. Push to the branch (`git push origin feature/YourFeature`).
+5. Create a new Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
