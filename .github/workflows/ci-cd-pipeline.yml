@@ -14,24 +14,41 @@ jobs:
 
     - name: Install dependencies and build
       working-directory: web
-      run: 
+      run:
         npm install
         npm run build 
-  test:
+
+  api-tests:
+    name: Run API tests
     runs-on: ubuntu-latest
     needs: build
-    
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Install dependencies
-      working-directory: web
-      run: npm install
+      - name: Install dependencies
+        working-directory: api 
+        run: npm install
 
-    - name: Run tests
-      working-directory: web
-      run: npm test 
+      - name: Run tests
+        working-directory: api
+        run: npm test 
+
+  web-tests:
+    name: Run Web tests
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        working-directory: web 
+        run: npm install
+
+      - name: Run tests
+        working-directory: web
+        run: npm test 
 
   deploy:
     runs-on: ubuntu-latest
